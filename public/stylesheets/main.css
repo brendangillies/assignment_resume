@@ -25,6 +25,7 @@
 		padding: 2em;
 	}
 	
+	
 	.btn {
 		border: none;
 	}
@@ -42,8 +43,14 @@
 	
 	
 @media print {
-  .no-print, .no-print *
-    {
-        display: none !important;
-    }
+.no-print, .no-print *
+  {
+      display: none !important;
+  }
+	
+	body { 
+		font-size: 64%;
+	}
+	
+	 footer {page-break-after: always;}
 }

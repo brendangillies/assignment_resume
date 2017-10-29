@@ -15,7 +15,7 @@
 
 <body>
 	<div class='container'>
-	<table>
+		<table>
 			<tr>
 				<div class='row'>
 					<div class='col-9'>
@@ -31,82 +31,15 @@
 			</tr>
 		</table>
 	
+	
 		<h3>Employment</h3>
-		<hr>		
-		<table>
-			<tr>
-				<td>
-					<strong><span id="position1"></span></strong><br>
-					<span id="position1company"></span>
-				</td>
-				<td class='text-right'> 
-					<span id="position1time"></span>
-				</td>
-			</tr>
-			<tr>
-				<td id="position1description" colspan='2'>
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					<strong><span id="position2"></span></strong><br>
-					<span id="position2company"></span>
-				</td>
-				<td class='text-right'> 
-					<span id="position2time"></span>
-				</td>
-			</tr>
-			<tr>
-				<td id="position2description" colspan='2'>
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					<strong><span id="position3"></span></strong><br>
-					<span id="position3company"></span>
-				</td>
-				<td class='text-right'> 
-					<span id="position3time"></span>
-				</td>
-			</tr>
-			<tr>
-				<td id="position3description" colspan='2'>
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					<strong><span id="position4"></span></strong><br>
-					<span id="position4company"></span>
-				</td>
-				<td class='text-right'> 
-					<span id="position4time"></span>
-				</td>
-			</tr>
-			<tr>
-				<td id="position4description" colspan='2'>
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					<strong><span id="position5"></span></strong><br>
-					<span id="position5company"></span>
-				</td>
-				<td class='text-right'> 
-					<span id="position5time"></span>
-				</td>
-			</tr>
-		
-			<tr>
-				<td id="position5description" colspan='2'>
-				</td>
-			</tr>
-		</table>
-		
-		<br>
+		<hr>	
+	
+		<table id='position_table'></table>
+	
+		<!-- used for page break in css> --> 
+		<footer></footer>
+	
 		<h3>Education</h3>
 		<hr>
 		<table>
@@ -129,19 +62,19 @@
 		<p><strong>Web: </strong><span id="webskills"></span><br>
 		<strong>Enterprise Software: </strong><span id="enterprise"></span><br>
 		<strong>Websites Built: </strong><span id="sites"></span></p>
-		
+	
 		<h3>Recent Learning</h3>
 		<hr>
 		<div id="learning"></div>
-		
+
 		<h3>Scholarships & Distinctions</h3>
 		<hr>
 		<div id="distinctions"></div>
-		
+	
 		<h3>Interests</h3>
 		<hr>
 		<div id="interests"></div>
-	
+
 		<!-- Modal -->
 		<div id="myModal" class="modal fade" role="dialog">
 		  <div class="modal-dialog modal-lg">
@@ -164,126 +97,129 @@
 
 <script>
 	$(function(){
-		$('#exampleModal').on('shown.bs.modal', function () {
-		  $('#myInput').trigger('focus')
-		})
+			// get resume jSON object
+			var resume = $.getJSON( "resume.json", function( data ) {
+			var data = data[0];
 		
-		var ul1 = $('<ul>').appendTo('#position1description');
-		var ul2 = $('<ul>').appendTo('#position2description');
-		var ul3 = $('<ul>').appendTo('#position3description');
-		var ul4 = $('<ul>').appendTo('#position4description');
-		var ul5 = $('<ul>').appendTo('#position5description');
-		
-		var resume = $.getJSON( "resume.json", function( data ) {
-		var data = data[0];
-			
-			
+			//build employment positions layout 
+			for (i =1; i < 6; i++) {
+				$('#position_table').append('<tr id="pos'+i+'table">');
+				$('#pos'+i+'table').append('<div class="row" id="position'+i+'row1">');
+				$('#pos'+i+'table').append('<div class="row" id="position'+i+'description">');
+				$('#position'+i+'row1').append('<div class="col" id="left'+i+'">');
+				$('#position'+i+'row1').append('<div class="col text-right" id="right'+i+'">');
+				$('#left'+i+'').append('<strong><span id="position'+i+'"></strong>');
+				$('#left'+i+'').append('<br><span id="position'+i+'company">');
+				$('#right'+i+'').append('<br><span id="position'+i+'time">');
+				$('#ul'+i+'').append('<li id="item'+i+'">')
+			};
+
 			$("#resume-name").html(data.name.first + " " + data.name.last + " <small>" + data.designation + "</small>");
-			$("#contact").text( data.phone.formatted + " \u2022  " + data.email.email); 
+			$("#contact").text( data.phone.formatted + " \u2022  " + data.email.email);
+		
+			var ul1 = $('<ul>').appendTo('#position1description');
 			$("#position1").text(data.position1);
 			$("#position1company").text(data.position1company);
-			$("#position1time").text(data.position1time);   
+			$("#position1time").text(data.position1time);
 			$.each(data.position1description, function() {
 			  $.each(this, function (key, value) {
-						var item= $(document.createElement('li')); 
+						var item= $(document.createElement('li'));
 						ul1.append(item.text(value)
 						);
 			   });
 			});
-			
-			
+
+			var ul2 = $('<ul>').appendTo('#position2description');
 			$("#position2").text(data.position2);
 			$("#position2company").text(data.position2company);
-			$("#position2time").text(data.position2time);   
+			$("#position2time").text(data.position2time);
 			$.each(data.position2description, function() {
 			  $.each(this, function (key, value) {
-						var item= $(document.createElement('li')); 
+						var item= $(document.createElement('li'));
 						ul2.append(item.text(value)
 						);
 			   });
 			});
-			
-			
-			
+
+
+			var ul3 = $('<ul>').appendTo('#position3description');
 			$("#position3").text(data.position3);
 			$("#position3company").text(data.position3company);
-			$("#position3time").text(data.position3time);   
+			$("#position3time").text(data.position3time);
 			$.each(data.position3description, function() {
 			  $.each(this, function (key, value) {
-						var item= $(document.createElement('li')); 
+						var item= $(document.createElement('li'));
 						ul3.append(item.text(value)
 						);
 			   });
 			});
-			
+
+			var ul4 = $('<ul>').appendTo('#position4description');
 			$("#position4").text(data.position4);
 			$("#position4company").text(data.position4company);
-			$("#position4time").text(data.position4time);   
+			$("#position4time").text(data.position4time);
 			$.each(data.position4description, function() {
 			  $.each(this, function (key, value) {
-						var item= $(document.createElement('li')); 
+						var item= $(document.createElement('li'));
 						ul4.append(item.text(value)
 						);
 			   });
 			});
-			
+		
+			var ul5 = $('<ul>').appendTo('#position5description');
 			$("#position5").text(data.position5);
 			$("#position5company").text(data.position5company);
-			$("#position5time").text(data.position5time);   
+			$("#position5time").text(data.position5time);
 			$.each(data.position4description, function() {
 			  $.each(this, function (key, value) {
-						var item= $(document.createElement('li')); 
+						var item= $(document.createElement('li'));
 						ul5.append(item.text(value)
 						);
 			   });
 			});
-			
+
 			$("#degree").text(data.degree);
 			$("#university").text(data.university);
 			$("#universitytime").text(data.universitytime);
-			
+
 			$('#webskills').text(data.webskills);
 			$('#enterprise').text(data.enterprisesoftware);
 			$('#sites').text(data.websites1 + " " + data.websites2);
-			console.log(data); 
-			 
+			console.log(data);
+
 			var ul6 = $('<ul>').appendTo('#learning');
 			$.each(data.recentlearning, function() {
 			  $.each(this, function (key, value) {
-						var item= $(document.createElement('li')); 
+						var item= $(document.createElement('li'));
 						ul6.append(item.text(value)
 						);
 			   });
 			});
-			
+
 			var ul7 = $('<ul>').appendTo('#distinctions');
 			$.each(data.distinctions, function() {
 			  $.each(this, function (key, value) {
-						var item= $(document.createElement('li')); 
+						var item= $(document.createElement('li'));
 						ul7.append(item.text(value)
 						);
 			   });
 			});
-			
+
 			var ul8 = $('<ul>').appendTo('#interests');
 			$.each(data.interests, function() {
 			  $.each(this, function (key, value) {
-						var item= $(document.createElement('li')); 
+						var item= $(document.createElement('li'));
 						ul8.append(item.text(value)
 						);
 			   });
 			});
-			
-			console.log(data.picturedata);
-			
-			var picture_data = data.picturedata; 
+
+			var picture_data = data.picturedata;
 			$("#image", {
 			  "data": "data:application/pdf;base64," + data.picturedata,
-				"type": "application/pdf",
-			  // added `width` , `height` properties to `img` attributes
-			  "width": "250px", "height": "250px"})
+				"type": "application/pdf"})
 			.appendTo("#imge");
-			
+
 			$("#image").attr('data', "data:application/pdf;base64,"+picture_data);
 		});
 	});
