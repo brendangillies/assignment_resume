@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <% include ../partials/header.ejs %>
+	<title>Brendan Gillies' Resume</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+	<link rel="shortcut icon" href="/stylesheets/favicon.ico">
 </head>
 
 <body>
@@ -15,7 +24,8 @@
 					</div>
 					<div class='col text-right'>
 						<br>
-						<button type="button" class="btn btn-info btn-sm no-print text-right" data-toggle="modal" data-target="#myModal">See PDF Resume</button>
+						<a class='btn btn-outline-info btn-sm no-print' href="javascript:window.print()"><img src='/stylesheets/print.svg'></img></a>
+						<button type="button" class="btn btn-outline-info btn-sm no-print" data-toggle="modal" data-target="#myModal"><img src='/stylesheets/pdf.svg'></img></button>
 					</div>
 				</div>
 			</tr>
@@ -140,8 +150,8 @@
 		      <div class="modal-header text-center">
 		        <h4 class="modal-title">Original PDF (from jSON picture data)</h4>
 		      </div>
-		      <div class="modal-body">
-						<object class='no-print' id="image" type="application/pdf"></object>
+		      <div class="embed-responsive embed-responsive-4by3 modal-body">
+						<object class='embed-responsive-item noprint' id="image" type="application/pdf"></object>
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
