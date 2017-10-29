@@ -53,4 +53,8 @@
 	}
 	
 	 footer {page-break-after: always;}
+	 
+	 .page-2-top { 
+		 padding-top: 1em;
+	 }
 }
