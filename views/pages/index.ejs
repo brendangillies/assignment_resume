@@ -5,62 +5,283 @@
 </head>
 
 <body>
+	<div class='container'>
+	<table>
+			<tr>
+				<div class='row'>
+					<div class='col-9'>
+						<h1 id='resume-name'></h1>
+						<strong><p id="contact"></p> </strong>
+					</div>
+					<div class='col text-right'>
+						<br>
+						<button type="button" class="btn btn-info btn-sm no-print text-right" data-toggle="modal" data-target="#myModal">See PDF Resume</button>
+					</div>
+				</div>
+			</tr>
+		</table>
+	
+		<h3>Employment</h3>
+		<hr>		
+		<table>
+			<tr>
+				<td>
+					<strong><span id="position1"></span></strong><br>
+					<span id="position1company"></span>
+				</td>
+				<td class='text-right'> 
+					<span id="position1time"></span>
+				</td>
+			</tr>
+			<tr>
+				<td id="position1description" colspan='2'>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<strong><span id="position2"></span></strong><br>
+					<span id="position2company"></span>
+				</td>
+				<td class='text-right'> 
+					<span id="position2time"></span>
+				</td>
+			</tr>
+			<tr>
+				<td id="position2description" colspan='2'>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<strong><span id="position3"></span></strong><br>
+					<span id="position3company"></span>
+				</td>
+				<td class='text-right'> 
+					<span id="position3time"></span>
+				</td>
+			</tr>
+			<tr>
+				<td id="position3description" colspan='2'>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<strong><span id="position4"></span></strong><br>
+					<span id="position4company"></span>
+				</td>
+				<td class='text-right'> 
+					<span id="position4time"></span>
+				</td>
+			</tr>
+			<tr>
+				<td id="position4description" colspan='2'>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<strong><span id="position5"></span></strong><br>
+					<span id="position5company"></span>
+				</td>
+				<td class='text-right'> 
+					<span id="position5time"></span>
+				</td>
+			</tr>
+		
+			<tr>
+				<td id="position5description" colspan='2'>
+				</td>
+			</tr>
+		</table>
+		
+		<br>
+		<h3>Education</h3>
+		<hr>
+		<table>
+			<tr>
+				<div class='row'>
+					<div class='col'>
+						<strong><span id="degree"></span></strong><br>
+						<span id="university"></span>
+					</div>
+					<div class='col text-right'> 
+						<span id="universitytime"></span>
+					</div>
+				</div>
+			</tr>
+		</table>
+		
+		<br>
+		<h3>Software</h3>
+		<hr> 
+		<p><strong>Web: </strong><span id="webskills"></span><br>
+		<strong>Enterprise Software: </strong><span id="enterprise"></span><br>
+		<strong>Websites Built: </strong><span id="sites"></span></p>
+		
+		<h3>Recent Learning</h3>
+		<hr>
+		<div id="learning"></div>
+		
+		<h3>Scholarships & Distinctions</h3>
+		<hr>
+		<div id="distinctions"></div>
+		
+		<h3>Interests</h3>
+		<hr>
+		<div id="interests"></div>
+	
+		<!-- Modal -->
+		<div id="myModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog modal-lg">
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header text-center">
+		        <h4 class="modal-title">Original PDF (from jSON picture data)</h4>
+		      </div>
+		      <div class="modal-body">
+						<object class='no-print' id="image" type="application/pdf"></object>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div> <!--End container -->
 
-  <% include ../partials/nav.ejs %>
 
-<div class="jumbotron text-center">
-  <div class="container">
-    <a href="/" class="lang-logo">
-      <img src="/lang-logo.png">
-    </a>
-    <h1>Getting Started with Node on Heroku v1.0 dev branch</h1>
-    <p>This is a sample Node application deployed to Heroku. It's a reasonably simple app - but a good foundation for understanding how to get the most out of the Heroku platform.</p>
-    <a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-nodejs"><span class="glyphicon glyphicon-flash"></span> Getting Started with Node</a>
-    <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/node-js-getting-started"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a>
-  </div>
-</div>
-<div class="container">
-  <div class="alert alert-info text-center" role="alert">
-    To deploy your own copy, and learn the fundamentals of the Heroku platform, head over to the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs" class="alert-link">Getting Started with Node on Heroku</a> tutorial.
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-info-sign"></span> How this sample app works</h3>
-      <ul>
-        <li>This app was deployed to Heroku, either using Git or by using <a href="https://github.com/heroku/node-js-getting-started">Heroku Button</a> on the repository.</li>
-
-        <li>When Heroku received the source code, it fetched all the dependencies in the <a href="https://github.com/heroku/node-js-getting-started/blob/master/package.json">package.json</a>, creating a deployable slug.</li>
-        <li>The platform then spins up a dyno, a lightweight container that provides an isolated environment in which the slug can be mounted and executed.</li>
-        <li>You can scale your app, manage it, and deploy over <a href="https://addons.heroku.com/">150 add-on services</a>, from the Dashboard or CLI.</li>
-      </ul>
-    </div>
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-link"></span> Next Steps</h3>
-      <ul>
-        <li>If you are following the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs">Getting Started</a> guide, then please head back to the tutorial and follow the next steps!</li>
-        <li>If you deployed this app by deploying the Heroku Button, then in a command line shell, run:</li>
-        <ul>
-          <li><code>git clone https://github.com/heroku/node-js-getting-started.git</code> - this will create a local copy of the source code for the app</li>
-          <li><code>cd node-js-getting-started</code> - change directory into the local source code repository</li>
-          <li><code>heroku git:remote -a &lt;your-app-name></code> - associate the Heroku app with the repository</li>
-          <li>You'll now be set up to run the app locally, or <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#push-local-changes">deploy changes</a> to Heroku</li>
-        </ul>
-      </ul>
-      <h3><span class="glyphicon glyphicon-link"></span> Helpful Links</h3>
-      <ul>
-        <li><a href="https://www.heroku.com/home">Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/">Heroku Dev Center</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs">Getting Started with Node on Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/deploying-nodejs">Deploying Node Apps on Heroku</a></li>
-      </ul>
-    </div>
-  </div> <!-- row -->
-   <div class="alert alert-info text-center" role="alert">
-    Please do work through the Getting Started guide, even if you do know how to build such an application.  The guide covers the basics of working with Heroku, and will familiarize you with all the concepts you need in order to build and deploy your own apps.
-  </div>
-</div>
-
+<script>
+	$(function(){
+		$('#exampleModal').on('shown.bs.modal', function () {
+		  $('#myInput').trigger('focus')
+		})
+		
+		var ul1 = $('<ul>').appendTo('#position1description');
+		var ul2 = $('<ul>').appendTo('#position2description');
+		var ul3 = $('<ul>').appendTo('#position3description');
+		var ul4 = $('<ul>').appendTo('#position4description');
+		var ul5 = $('<ul>').appendTo('#position5description');
+		
+		var resume = $.getJSON( "resume.json", function( data ) {
+		var data = data[0];
+			
+			
+			$("#resume-name").html(data.name.first + " " + data.name.last + " <small>" + data.designation + "</small>");
+			$("#contact").text( data.phone.formatted + " \u2022  " + data.email.email); 
+			$("#position1").text(data.position1);
+			$("#position1company").text(data.position1company);
+			$("#position1time").text(data.position1time);   
+			$.each(data.position1description, function() {
+			  $.each(this, function (key, value) {
+						var item= $(document.createElement('li')); 
+						ul1.append(item.text(value)
+						);
+			   });
+			});
+			
+			
+			$("#position2").text(data.position2);
+			$("#position2company").text(data.position2company);
+			$("#position2time").text(data.position2time);   
+			$.each(data.position2description, function() {
+			  $.each(this, function (key, value) {
+						var item= $(document.createElement('li')); 
+						ul2.append(item.text(value)
+						);
+			   });
+			});
+			
+			
+			
+			$("#position3").text(data.position3);
+			$("#position3company").text(data.position3company);
+			$("#position3time").text(data.position3time);   
+			$.each(data.position3description, function() {
+			  $.each(this, function (key, value) {
+						var item= $(document.createElement('li')); 
+						ul3.append(item.text(value)
+						);
+			   });
+			});
+			
+			$("#position4").text(data.position4);
+			$("#position4company").text(data.position4company);
+			$("#position4time").text(data.position4time);   
+			$.each(data.position4description, function() {
+			  $.each(this, function (key, value) {
+						var item= $(document.createElement('li')); 
+						ul4.append(item.text(value)
+						);
+			   });
+			});
+			
+			$("#position5").text(data.position5);
+			$("#position5company").text(data.position5company);
+			$("#position5time").text(data.position5time);   
+			$.each(data.position4description, function() {
+			  $.each(this, function (key, value) {
+						var item= $(document.createElement('li')); 
+						ul5.append(item.text(value)
+						);
+			   });
+			});
+			
+			$("#degree").text(data.degree);
+			$("#university").text(data.university);
+			$("#universitytime").text(data.universitytime);
+			
+			$('#webskills').text(data.webskills);
+			$('#enterprise').text(data.enterprisesoftware);
+			$('#sites').text(data.websites1 + " " + data.websites2);
+			console.log(data); 
+			 
+			var ul6 = $('<ul>').appendTo('#learning');
+			$.each(data.recentlearning, function() {
+			  $.each(this, function (key, value) {
+						var item= $(document.createElement('li')); 
+						ul6.append(item.text(value)
+						);
+			   });
+			});
+			
+			var ul7 = $('<ul>').appendTo('#distinctions');
+			$.each(data.distinctions, function() {
+			  $.each(this, function (key, value) {
+						var item= $(document.createElement('li')); 
+						ul7.append(item.text(value)
+						);
+			   });
+			});
+			
+			var ul8 = $('<ul>').appendTo('#interests');
+			$.each(data.interests, function() {
+			  $.each(this, function (key, value) {
+						var item= $(document.createElement('li')); 
+						ul8.append(item.text(value)
+						);
+			   });
+			});
+			
+			console.log(data.picturedata);
+			
+			var picture_data = data.picturedata; 
+			$("#image", {
+			  "data": "data:application/pdf;base64," + data.picturedata,
+				"type": "application/pdf",
+			  // added `width` , `height` properties to `img` attributes
+			  "width": "250px", "height": "250px"})
+			.appendTo("#imge");
+			
+			$("#image").attr('data', "data:application/pdf;base64,"+picture_data);
+		});
+	});
+</script>
 
 </body>
+
+
+
+
 </html>
